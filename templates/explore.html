@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    explore
+{% endblock %}
+
+{% block main %}
+<body>
+    <!--Search bar from Bootstrap: https://getbootstrap.com/docs/4.0/components/navbar/ !-->
+    <form action="/explore" method="post">
+    <div class="input-group">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="resturant" name="restaurant" placeholder="search by restaurant..." type="text">
+        <button id="searchbutton" type="submit" class="btn btn-outline-primary">search</button>
+    </div>
+    </form>
+    <br>
+    <br>
+    {% for restid in restdb %}
+        <!--Card formatting from Bootstrap: https://getbootstrap.com/docs/4.0/components/card/ -->
+       <!--Column formatting from W3: https://www.w3schools.com/howto/howto_css_two_columns.asp -->
+        <div class="row">
+        <div class="card text-center">
+          <div class="card-header" style="background-color:#d9c5a5;">
+            <div style="margin-left: 20px; color: white">{{ restid.restaurant }}
+            {% if restid.fastfood == "yes" %}
+              <a class="btn btn-primary" id="inactive">fastfood<a>
+            {% endif %}
+            {% if restid.dessert == "yes" %}
+              <a class="btn btn-primary" id="inactive">dessert<a>
+            {% endif %}
+            {% if restid.mexican == "yes" %}
+              <a class="btn btn-primary" id="inactive">mexican<a>
+            {% endif %}
+            {% if restid.asian == "yes" %}
+              <a class="btn btn-primary" id="inactive">asian<a>
+            {% endif %}
+            {% if restid.pizza == "yes" %}
+              <a class="btn btn-primary" id="inactive">pizza<a>
+            {% endif %}
+            {% if restid.healthy == "yes" %}
+              <a class="btn btn-primary" id="inactive">healthy<a>
+            {% endif %}
+            {% if restid.breakfast == "yes" %}
+              <a class="btn btn-primary" id="inactive">breakfast<a>
+            {% endif %}
+            {% if restid.indian == "yes" %}
+              <a class="btn btn-primary" id="inactive">indian<a>
+            {% endif %}
+          </div>
+          </div>
+          <div class="card-body">
+            <div class="column left" style="text-align: left; width: 35vw">
+            <p style="font-size: 20px; margin-left: 20px">menu items include...</p>
+            <p class="card-title" id="maintag" style="margin-left: 20px">
+              {{ restid.menu1 }}<br>
+              {{ restid.menu2 }}<br>
+              {{ restid.menu3 }}<br>
+              {{ restid.menu4 }}<br>
+              {{ restid.menu5 }}<br>
+            </p>
+            <br>
+            <a href="{{ restid.menu }}" class="btn btn-primary" style="margin-left: 20px">view full menu</a>
+            <br><br>
+            </div>
+            <div class="column middle" style="text-align: center; width: 35vw">
+              <p class="card-text" style="text-align: center">
+                {% if restid.pickup == "yes" %}
+              <a href="{{ restid.pickupweb }}"class="btn btn-primary">pickup</a>
+                {% else %}
+              <a class="btn btn-primary" id="negative">pickup</a>
+                {% endif %}
+                {% if restid.delivery == "yes" %}
+              <a href="{{ restid. deliveryweb }}" class="btn btn-primary">delivery</a>
+                {% else %}
+                  <a class="btn btn-primary" id="negative">delivery</a>
+                {% endif %}
+                <br> 
+                <div class="btn btn-primary" id="inactive" style="text-align: left; border: 2px solid #d9c5a5; background-color: white; color: black">
+                hours:<br>
+                monday: {{ restid.monday }}<br>
+                tuesday: {{ restid.tuesday }}<br>
+                wednesday: {{ restid.wednesday }}<br>
+                thursday: {{ restid.thursday }}<br>
+                friday: {{ restid.friday }}<br>
+                saturday: {{ restid.saturday }}<br>
+                sunday: {{ restid.sunday }}<br>
+                </div>
+                <br>
+                <br>
+              </p>
+            </div>
+            <div class="column right" style="width: 30vw">
+              <div style="width: 25vw; margin: auto">
+                <img class="d-block w-100" src="/static/images/{{ restid.restaurant }}/1.jpg" alt="food from {{ restid.restaurant }}">
+              </div>
+            <br>
+            <a href="{{ restid.website }}" class="btn btn-primary" style="margin-right: 20px">visit website</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+    {% endfor %}
+</body>
+
+{% endblock %}

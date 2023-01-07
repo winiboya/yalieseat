@@ -1,0 +1,32 @@
+GOOGLE DRIVE LINK
+https://drive.google.com/file/d/15BaKFgPlimioC24I6Ug7mXXdHhQ__lru/view?usp=sharing 
+
+APP.PY
+This python file pulls from our database, yalies.db, and renders HTML pages. For home, this is done by pulling the data for a single featured restaurant as well as data for five other fetured restaurants. Each restaurant can be changed by altering the id in "feat =" or the ids that serve as place holders in "restdb =" and "restid =." This information is then passed through "home.html" and the "home.html" template is rendered. This all happens in the case that the request method is "GET," which is will always be. For explore, if the request method is "GET," i.e., the user clicked on the navbar to get to the page, information from all restaurants in the database will be pulled and passed through to "explore.html." The page will then be rendered. If the request method is "GET," meaning the user is searching for a restaurant, information will be pulled and passed through only for restaurants that include the searched phrase, case insensitive. The page will then be rendered. If no restaurants contain the searched phrase, an error page will be rendered instead. For randomize, a random number is generated (with a range of the number of restaurants in the database), then infromation is pulled from the database for the restaurant with that id. This information is then passed through "randomize.html," and the template is rendered. For suggest, a page is simply rendererd.
+
+LAYOUT.HTML
+Formatting for each HTML page begins with layout, which is then extended. Our stylesheets are linked under "head," and the navbar is included in the body. That way, the navbar shows up on every page. Then, there is a main block which is extended through separate HTML pages.
+
+HOME.HTML
+This page extends "layout.html." It includes two columns. The left column consists of a card that displays an image and restaurant name for the main featured restaurant. This information is pulled from the yalies.db so it can then be populated with jinga. The right column consists of four restaurant names, each linked to their respective website. This information is once again pulled from yalies.db through python, then looped through.
+
+EXPLORE.HTML
+This page extends "layout.html." The page begins with a search bar. The search bar takes an input, the restaurant name, then passes it through to our python code. The rest of the page loops through the inforamtion that python passes through. Each restaurant creates a new row with three columns. The column header consists of the restaurant name, as well as tags for specific types of restaurants. The tags are generated through jinga if statements, checking to see if the database entry is "yes" for a specific type of restaurant, and creating a tag in the header if the answer is yes. The left column of the card body consists of a sample menu and link to the restaurant's full menu. The sample menu items are pulled from the database, as well as teh link for the website. The middle column consists of pickup and delivery options as well as restaurant hours. The pickup and delivery options also utilize jinga if statements. If the database entry for pickup or delivery is "yes," then an orange linked button is generated, which links to the pickup or delivery website. If either of these has an entry of "no," a grey, inactive button is generated. Restaurant hours are pulled from the database as well. The right column consists of an image for of the restaurant's food, taken from the respective website, and a link to the restaurant's website's homepage. The image is inserted through a patterened src that includes the restaurant's name, which is pulled from the database upon each loop. The website link is also pulled from the database.
+
+RANDOMIZE.HTML
+This page extends "layout.html." All information is pulled from the database through python for a specific, random restaurant. The main part of the page is a card generated for the random restaurant. The header contains the restaurant name, pulled from the database. The body of the card contains the sample menu, also pulled from the database. The footer contains pickup, delivery, and full website links, implemented in the same manner as in "explore.html."
+
+SEARCHAPOLOGY.HTML
+This page extends "layout.html." It begins with a search bar, so that the user can retry to failed search. It is implemented the same as in "explore.html." Then there is a text apology, informing the user that their search did not produce any results.
+
+SUGGEST.HTML
+This page extends "layout.html." It features a header as well as an input box and button. We created a form that automatically generates and sends an email to the creator of the website. The form allows a user to type in the name of any restaurant that they wish to be featured on yalieseat.com (in the input box), and once they submit the form (via enter or the "request" button), the name of the restaurant is emailed to the website creator, who can then determine the validity of the request and add it to the site. In order to implement this, we used formsubmit.co, a free way to enable submissions to be sent to any email address. In this case, we set our form action equal to the FormSubmit.co link, and used our personal email. Once we attempted to submit the form once, we received an email that included an encrypted numbered code, which we used to replace our actual email address in the code, which made it more secure. This is the numbered code that is seen in our html code.
+
+STYLES.CC
+This file simply contains CSS styles. It is linked on "layout.html."
+
+STATIC/IMAGES FOLDER
+These folder contain images that are pulled for multiple HTML pages. Each restaurant has a folder, titled the name of the restaurant, containing an image titled "1.jpg." This consistent format allows the image to be easily pulled for any template using, "/static/images/{{ restid.restaurant }}/1.jpg."
+
+YALIES.DB
+The database contains all information that will be displayed for restaurants. Columns include the id, restaurant name, contant number, hours for each day of the week, five menu items, links to the full website, menu, delivery website, and pikcup website, whether there is delivery and/or pickup, and several types of restaurant tags. All of this information is pulled by "app.py" and then passed through HTML pages to be displayed to the user. 

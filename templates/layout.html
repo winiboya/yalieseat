@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- Page structuring from Finance-->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <!--Bootstrap CSS stylesheet-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="/venv/static/styles.css" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+        <!-- <script defer src="script.js"></script> -->
+        <title>yalieseat | {% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <!--Bootsrap navbar:https://getbootstrap.com/docs/4.0/components/navbar/ -->
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#BB371A">
+            <a class="navbar-brand" href="/" style="color: white">yalies eat</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" id="navwhite" href="/explore">explore</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="navwhite" href="/randomize">can't choose?</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="navwhite" href="/suggest">request</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+    <main>
+      <br>
+      {% block main %}{% endblock %}
+    </main>
+  </body>
+</html>

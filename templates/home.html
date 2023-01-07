@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    home
+{% endblock %}
+
+{% block main %}
+<body>
+
+  <!--Card formatting from Bootstrap: https://getbootstrap.com/docs/4.0/components/card/ -->
+  <!--Column formatting from W3: https://www.w3schools.com/howto/howto_css_two_columns.asp -->
+  <h class="mainfeatured">
+    featured restaurants
+  </h>
+  <br>
+  <br>
+  <div class="row">
+    <!-- LEFT COLUMN -->
+    <div class="column left" style="width: 50vw">
+      {% for featid in featdb %}
+      <div class="card" style="margin: 30px; margin-top: 0">
+        <div class="card-body">
+          <a href="{{ featid.website }}">
+            <img class="d-block w-100" id="featimage" src="/static/images/{{ featid.restaurant }}/1.jpg" alt="First slide" style="width: 50vw">
+          </a>
+        </div>
+        <div class="card-footer" style= "font-size: 40px; font-weight: bold; background-color:#d9c5a5; color: white; text-align: left">
+              {{ featid. restaurant }}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- RIGHT COLUMN -->
+    <br>
+    <div class="column right" style="width: 50vw; text-align: right; margin: auto">
+      {% for restid in restdb %}
+      <a href="{{ restid.website }}" class="featured" style="margin: 20px;">{{ restid.restaurant }}</a>
+      <br>
+      <br>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+{% endblock %}

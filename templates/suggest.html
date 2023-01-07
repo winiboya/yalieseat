@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    request
+{% endblock %}
+
+{% block main %}
+    <h class="mainfeatured" style="font-size: 30px; text-align: right; margin-left: 130px;">don't see your favorite restaurant? request below to have it featured on yalies eat!<h>
+        <form action="https://formsubmit.co/9d75fb52baf4f9525d11f912aeded4aa" method="post" style="text-align: center;">
+            <div class="mb-3">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="request" name="request" placeholder="enter restaurant here" type="text" style="margin: 30px; width: 25vw; font-size: 20px;">
+            </div>
+            <button class="btn btn-primary" type="submit" style="font-size: 20px; width: 15vw;">request</button>
+        </form>
+{% endblock %}

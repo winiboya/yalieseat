@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    quiz
+{% endblock %}
+
+{% block main %}
+<!--Search bar from Bootstrap: https://getbootstrap.com/docs/4.0/components/navbar/ !-->
+<form action="/explore" method="post">
+    <div class="input-group">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="resturant" name="restaurant" placeholder="search by restaurant..." type="text">
+        <button id="searchbutton" type="button" class="btn btn-outline-primary">search</button>
+    </div>
+    </form>
+    <br>
+    <br>
+    <br>
+<p class="apology">
+    sorry, no results found
+    <br>
+    <br>
+    please try adjusting your search
+</p>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    can't choose?
+{% endblock %}
+
+{% block main %}
+{% for restid in restdb %}
+    <h class="mainfeatured" style="font-size: 30px; text-align: center; margin: 225px">
+      can't choose a place to eat? reload the page for a random restaurant.
+    </h>
+    <br>
+    <br>
+    <br>        
+        <!--Card formatting from Bootstrap: https://getbootstrap.com/docs/4.0/components/card/ -->
+       <!--Column formatting from W3: https://www.w3schools.com/howto/howto_css_two_columns.asp -->
+        <div class="row" style="width: 50vw; margin-left: auto; margin-right: auto;">
+        <div class="card text-center" style="width: 50vw;">
+          <div class="card-header" style="text-align: center; align-items: center; font-size: 30px">
+            {{ restid.restaurant }}
+          </div>
+          <div class="card-body">
+            <div class="column left; width: 55%"> 
+              <div>
+                  <img class="d-block w-100"style="padding: 20px" src="/static/images/{{ restid.restaurant }}/1.jpg" alt="First ">
+                  <!--"/static/images/cuties.PNG"-->
+              </div>
+            </div>
+            <div class="column right" style="text-align: left; width: 45%">
+            <p style="font-size: 20px; margin: 0; padding-left: 20px">menu items include...</p>
+            <p class="card-title" id="maintag" style="padding-left: 20px">
+              {{ restid.menu1 }}<br>
+              {{ restid.menu2 }}<br>
+              {{ restid.menu3 }}<br>
+              {{ restid.menu4 }}<br>
+              {{ restid.menu5 }}<br>
+            </p>
+            <br>
+            <a href="{{ restid.menu }}" class="btn btn-primary" style="margin-left: 20px">view full menu</a>
+            <br><br>
+            </div>
+            
+          </div>
+          <div class="card-footer text-muted">
+            {% if restid.pickup == "yes" %}
+            <a href="{{ restid.pickupweb }}"class="btn btn-primary">pickup</a>
+              {% else %}
+            <a class="btn btn-primary" id="negative">pickup</a>
+              {% endif %}
+              {% if restid.delivery == "yes" %}
+            <a href="{{ restid. deliveryweb }}" class="btn btn-primary">delivery</a>
+              {% else %}
+                <a class="btn btn-primary" id="negative">delivery</a>
+              {% endif %}
+            <a href="{{ restid.website }}" class="btn btn-primary" style="margin: 5px">visit website</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+</body>
+
+{% endblock %}
