@@ -1,8 +1,3 @@
-VIDEO LINK
-https://youtu.be/u7NS_KNtItw
-
-GOOGLE DRIVE LINK
-https://drive.google.com/file/d/15BaKFgPlimioC24I6Ug7mXXdHhQ__lru/view?usp=sharing
 
 SETTING UP
 Open the "yalies" folder in VSCode. The virtual environment will need to be activated. Although this depends on where the file is saved, executing "source /Applications/yalies/venv/bin/activate" worked for us. Then cd into "venv." To view the website, execute "flask run." It is possible that flask will need to be installed via https://flask.palletsprojects.com/en/2.0.x/installation/ or that the FLASK_APP environment variable will need to be exported, instructions via https://flask.palletsprojects.com/en/2.0.x/quickstart/ if it does not automatically work. Upon running "flask run," click the link to access our project.
